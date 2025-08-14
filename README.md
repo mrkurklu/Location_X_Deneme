@@ -1,38 +1,74 @@
 # Location X Management System
 
-This app uses Next.js, TailwindCSS, MongoDB/Mongoose, and NextAuth with JWT sessions and role-based access control.
+Bu proje, lokasyon bazlı stok ve satış yönetim sistemi için geliştirilmiştir.
 
-## Getting Started
+## Vercel Deployment
 
-1. Create a `.env.local` file in the project root with:
+Bu projeyi Vercel'de deploy etmek için aşağıdaki environment variables'ları ayarlamanız gerekmektedir:
 
-```
-MONGODB_URI=
-NEXTAUTH_SECRET=
-NEXTAUTH_URL=http://localhost:3000
+### Gerekli Environment Variables
+
+Vercel dashboard'unda Settings > Environment Variables bölümünde aşağıdaki değişkenleri ekleyin:
+
+```bash
+# NextAuth.js Configuration
+NEXTAUTH_SECRET=your-secret-key-here
+NEXTAUTH_URL=https://your-app.vercel.app
+
+# MongoDB Configuration
+MONGODB_URI=your-mongodb-connection-string
+
+# Admin User Configuration (optional)
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD=admin123
+
+# Custom Configuration
+CUSTOM_KEY=your-custom-key
 ```
 
-2. Install dependencies and run the dev server:
+### NEXTAUTH_SECRET Oluşturma
 
+Terminal'de aşağıdaki komutu çalıştırarak güvenli bir secret oluşturun:
+
+```bash
+openssl rand -base64 32
 ```
-npm i
+
+### MongoDB Atlas Bağlantısı
+
+1. MongoDB Atlas'ta bir cluster oluşturun
+2. Database Access bölümünde bir kullanıcı oluşturun
+3. Network Access bölümünde IP whitelist'e `0.0.0.0/0` ekleyin (tüm IP'lere izin verir)
+4. Connect butonuna tıklayıp connection string'i alın
+5. Bu string'i `MONGODB_URI` olarak Vercel'e ekleyin
+
+### Deployment Adımları
+
+1. Projeyi GitHub'a push edin
+2. Vercel'de yeni proje oluşturun
+3. GitHub repository'nizi seçin
+4. Environment variables'ları ekleyin
+5. Deploy edin
+
+## Local Development
+
+```bash
+npm install
 npm run dev
 ```
 
-3. Open `/auth/signin` and sign in with the admin credentials. On first login, the admin user will be created automatically if missing.
+## Build
 
-## Features
+```bash
+npm run build
+npm start
+```
 
-- Authentication with credentials provider and JWT sessions
-- Role-based access control: Admin, Sales Manager, Stock Manager
-- Manage Users (CRUD) with Admin-only access (API + UI working)
-- Placeholder pages for Stock, Sales, and Sales Management
-- Protected API routes with role checks and location scoping
-- TailwindCSS with dark mode and basic UI components
+## Özellikler
 
-## Deploy
-
-- Vercel-compatible. Set env vars on Vercel: `MONGODB_URI`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`, `ADMIN_USERNAME`, `ADMIN_PASSWORD`
-- Deploy via Git push to Vercel
+- Kullanıcı yönetimi ve rol tabanlı erişim kontrolü
+- Stok yönetimi
+- Satış takibi
+- Tahmini stok hesaplama
+- Responsive tasarım
+- Dark/Light tema desteği
