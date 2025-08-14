@@ -1,0 +1,26 @@
+{
+  "name": "location-x-management-system",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "bcryptjs": "^2.4.3",
+    "@tailwindcss/forms": "^0.5.7",
+    "mongoose": "^8.6.2",
+    "next": "^14.2.5",
+    "next-auth": "^4.24.7",
+    "postcss": "^8.4.45",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.4.1",
+    "swr": "^2.2.5",
+    "tailwindcss": "^3.4.10"
+  }
+}
+
+
